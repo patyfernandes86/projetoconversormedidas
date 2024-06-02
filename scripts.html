@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Unidades de Comprimento</title>
+</head>
+<body>
+    <h2>Conversor de Unidades de Comprimento</h2>
+    <label for="metros">Metros:</label>
+    <input type="number" id="metros">
+    
+    <label for="unidadeDestino">Unidade de Destino:</label>
+    <select id="unidadeDestino">
+        <option value="jarda">Jarda</option>
+        <option value="pe">Pé</option>
+        <option value="polegada">Polegada</option>
+        <option value="milha">Milha</option>
+    </select>
+    
+    <button onclick="converter()">Converter</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function converter() {
+            const metros = parseFloat(document.getElementById('metros').value);
+            const unidadeDestino = document.getElementById('unidadeDestino').value;
+            let resultado = '';
+
+            switch (unidadeDestino) {
+                case 'jarda':
+                    const jardas = metros * 1.09361;
+                    resultado = `${metros} metros equivalem a ${jardas.toFixed(2)} jardas.`;
+                    break;
+                case 'pe':
+                    const pes = metros * 3.28084;
+                    resultado = `${metros} metros equivalem a ${pes.toFixed(2)} pés.`;
+                    break;
+                case 'polegada':
+                    const polegadas = metros * 39.3701;
+                    resultado = `${metros} metros equivalem a ${polegadas.toFixed(2)} polegadas.`;
+                    break;
+                case 'milha':
+                    const milhas = metros * 0.000621371;
+                    resultado = `${metros} metros equivalem a ${milhas.toFixed(2)} milhas.`;
+                    break;
+                default:
+                    resultado = 'Por favor, selecione uma unidade de destino válida.';
+            }
+
+            document.getElementById('resultado').innerText = resultado;
+        }
+    </script>
+</body>
+</html>
